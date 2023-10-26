@@ -1,5 +1,6 @@
-package com.classwork.pattern.dto.entity.dto;
+package com.classwork.pattern.dto.dto;
 
+import com.classwork.pattern.dto.model.dto.LoginRecord;
 import org.junit.Before;
 import org.junit.Test;
 
