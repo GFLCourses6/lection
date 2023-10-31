@@ -1,4 +1,4 @@
-package vladproduction.com;
+package vladproduction.com.app01;
 
 public class User {
 

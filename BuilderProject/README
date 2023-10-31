@@ -1,0 +1,52 @@
+Builder Pattern performed:
+
+*app01:
+-simple implementation by inner class Builder with setters (returned Builder) and build() method return
+new User with this parameters maintained by User constructor() method;
+-to create new obj from class User we are able to use fields partially;
+
+*app02:
+A little bit more complicated example with Interface Builder (set of standard setters) and 2 classes implementing
+this interface (HouseBuilder, HouseBuilderExclusive);
+-HouseBuilder:
+    -has all fields from model (we create House)
+    -implemented methods from Builder;
+    -getResult() return new object of class House;
+    -in MainApp we just invoke sout to see the result;
+    -for fields are not initialized, we got 'null';
+
+-HouseBuilderExclusive:
+    -has all fields from model (we create House)
+    -implemented methods from Builder + extra setters for additional options (Pool, Garage);
+    -also we have method print(), information about created House by this builder;
+    -in MainApp we just invoke print() to see the result;
+    -for fields are not initialized, we have not 'null' (they aren`t append to string at all);
+
+In package model we have class House (object we want to create) and some classes for House;
+
+In class Director(package 'director') we have some methods for exact creation of the object, but:
+    -each method construct type of the House by using different builders;
+    -in methods we can have as parameter HouseBuilder (default methods);
+    -in methods we can have as parameter HouseBuilderExclusive (extra fields setters + method);
+
+MainApp:
+-have to initialise Director;
+-have to initialise HouseBuilder;
+-have to initialise HouseBuilderExclusive;
+
+director can construct, just say which House to build and use the right builder for;
+
+
+
+
+
+
+
+
+
+
+
+
+    -so we just invoke sout to see the result;
+    -for fields are not initialized, we got 'null';
+
