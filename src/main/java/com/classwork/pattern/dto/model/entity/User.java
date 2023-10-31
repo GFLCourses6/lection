@@ -28,7 +28,7 @@ public class User
 
     public void addShip(Ship ship) {
         if (this.ships == null) {
-            this.ships = new ArrayList<Ship>();
+            this.ships = new ArrayList<>();
         }
         this.ships.add(ship);
     }
@@ -65,9 +65,10 @@ public class User
         this.surname = surname;
     }
 
+    @Override
     public String toString() {
         return String.format(
-                "{name: %s, surname: %s, ship: %s}",
-                getName(), getSurname(), getShips());
+                "{name: %s, surname: %s}",
+                getName(), getSurname());
     }
 }
