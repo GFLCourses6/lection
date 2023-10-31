@@ -21,7 +21,7 @@ public class DtoApp {
         UserDto userDtoFromUser = UserMapper.userToUserDto(user);
         LOGGER.info(userDtoFromUser);
 
-        UserDto userDto = new UserDto("userDtoLogin", "userDtoPassword", "userDtoEmail");
+        UserDto userDto = new UserDto("userDtoLogin", "userDtoPassword", 10L);
         LOGGER.info(userDto);
         User userFromUserDto = UserMapper.userDtoToUser(userDto);
         LOGGER.info(userFromUserDto);

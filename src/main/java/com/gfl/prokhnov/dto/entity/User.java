@@ -6,6 +6,7 @@ public class User {
     private long id;
     private String login;
     private String password;
+    private Long timestamp;
     private String email;
     private String firstName;
     private String lastName;
@@ -80,6 +81,14 @@ public class User {
         this.age = age;
     }
 
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,6 +98,7 @@ public class User {
                 age == user.age &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
+                Objects.equals(timestamp, user.timestamp) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName);
@@ -96,15 +106,16 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, email, firstName, lastName, age);
+        return Objects.hash(id, login, password, timestamp, email, firstName, lastName, age);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + login + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", timestamp=" + timestamp +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

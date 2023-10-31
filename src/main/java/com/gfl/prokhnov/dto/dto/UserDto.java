@@ -5,15 +5,15 @@ import java.util.Objects;
 public class UserDto {
     private String login;
     private String password;
-    private String email;
+    private Long timestamp;
 
     public UserDto() {
     }
 
-    public UserDto(String login, String password, String email) {
+    public UserDto(String login, String password, Long timestamp) {
         this.login = login;
         this.password = password;
-        this.email = email;
+        this.timestamp = timestamp;
     }
 
     public String getLogin() {
@@ -32,12 +32,12 @@ public class UserDto {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -47,12 +47,12 @@ public class UserDto {
         UserDto userDto = (UserDto) o;
         return Objects.equals(login, userDto.login) &&
                 Objects.equals(password, userDto.password) &&
-                Objects.equals(email, userDto.email);
+                Objects.equals(timestamp, userDto.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, password, email);
+        return Objects.hash(login, password, timestamp);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class UserDto {
         return "UserDto{" +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                ", timestamp='" + timestamp + '\'' +
                 '}';
     }
 }

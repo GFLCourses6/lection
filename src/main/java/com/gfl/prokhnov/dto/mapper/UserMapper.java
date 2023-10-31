@@ -9,7 +9,7 @@ public class UserMapper {
         UserDto userDto = new UserDto();
         userDto.setLogin(user.getLogin());
         userDto.setPassword(user.getPassword());
-        userDto.setEmail(user.getEmail());
+        userDto.setTimestamp(user.getTimestamp());
         return userDto;
     }
 
@@ -17,7 +17,7 @@ public class UserMapper {
         User user = new User();
         user.setLogin(userDto.getLogin());
         user.setPassword(userDto.getPassword());
-        user.setEmail(userDto.getEmail());
+        user.setTimestamp(userDto.getTimestamp());
         return user;
     }
 }
