@@ -1,0 +1,65 @@
+In current project implemented a few examples of SINGLETON pattern (split by packages):
+    /* -one instance; -easy access; -control instantiation; */
+
+*app01 (simple):
+-instance of SingletonClass could be created one and only as unique;
+-key thing I admit as private constructor;
+-we use getInstance() method (public, so we can invoke) to create object if instance is null;
+
+*app02 (entre):
+-here I would like to show if we want to have only one visitor to Database as admin-role for example;
+-throw new RuntimeException if instance of the class is already exist;
+-otherwise possible to create an object (I use class Math.random() to simulate some numbers)
+
+*app03 (how fast): need to work more...
+
+*app04 (lazy load with constructor params):
+-same example as app01, but we have here added some state String 'value';
+-and to check if instance is one we compare by this value both of the created obj1 & obj2;
+-value we initialising as param of the getInstance(String value);
+
+*app05 (thread.sleep during creating obj1 and obj2):
+-we can speak here as 'heavy building instance' of Singleton Pattern, simulating creation delay;
+-constructor has incoming behavior with try/catch block which influence on Runtime;
+-so, an objects created after delay;
+-we see the different values "AAA" and "BBB" because they are has been created by various threads;
+-lets synchronize our class SingletonC, where we check (if instance == null);
+-now we see other (the right) action of creating instances of the class; "AAA" and "AAA";
+-steel one thread is running, next if exist waiting for release synchronise section;
+-if synchronized - we are not able to create of two instances of SingletonC, hashCode same for both;
+-(add behavior):
+1)critical section is: 'if' statement. without proper synchronization two (and more) threads can path if
+condition simultaneously(at the same time) and create new instance of singleton for each thread;
+hashCode are not same in this case;
+even without synchronisation we might think that idea of singleton is not broken;
+Run threadOne create singleton;
+Run threadTwo create singleton after some delay (5 sec for example);
+we will create one singleton;
+2)by synchronization all problem will gone even delay or not;
+but on the other hand it reduces performance (using synchronizes blocks or methods);
+for example(wide door and we synchronise to go through one-by-one, but it is possible to path all together);
+-class SingletonC2 demonstrate the model with synchronized behaviour for wool method getInstance();
+
+*app06:
+-lazy obj will be created in memory only after this object will be requested;
+
+*app07:
+-if we want to create instance of enum Class (SingletonD);
+-it works fine as much we would to have instances of that kind of class;
+for example(we have one TV and two setters for channels, last setter will alive);
+-if we toking about creation instances in threads from enum, interesting to describe that objects has same
+hashCodes but we can adjust unique values(as 'url') if we put try/catch block to delay;
+-otherwise objects (without sleeping thread) will be absolutely the same; (???here I have to dive deeper???)
+
+*app08 (initialisation on demand):
+-till JVM determine that class LazyHolder be executed, it does not initialized;
+-as soon as getInstance() invoked, LazyHolder initialize;
+-initialization phase is guaranteed sequential, non-concurrent, no further synchronization is required
+in the static getInstance() method during loading and initialization;
+-And since the initialization phase writes the static variable instance in a sequential operation,
+all subsequent concurrent invocations of the getInstance will return the same correctly initialized
+instance without incurring any additional synchronization overhead;
+
+
+
+
