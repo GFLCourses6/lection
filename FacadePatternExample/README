@@ -1,0 +1,18 @@
+Facade pattern:
+-encapsulates a complex subsystem behind a simple interface;
+-decouples a client implementation from the complex subsystem, we can make changes to the
+ existing subsystem and don’t affect a client;
+
+
+*app01 (demo from lection):
+-in testing (FacadeTest): 1)init SQLService; 2)init DbConnectionService;
+-as constant we are expecting connection and result of query by invoking of that query;
+-positive test will path if 'facade service' method getUserById(id) find the right id compare of expected;
+
+*app02 (home work):
+Create several Singleton and call him in the current facade. Every Singleton write in the console
+System.out.println("Action 1"), System.out.println("Action 2") etc.
+-clients of the singletons don't need to directly interact with each singleton's implementation details
+
+*app03(just simple example):
+-encapsulates the complexity of the subsystem by delegating calls to the appropriate subsystem objects;
