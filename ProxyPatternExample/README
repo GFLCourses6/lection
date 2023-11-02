@@ -1,0 +1,70 @@
+Proxy Pattern:
+    /* 1) help access control to the object without changing behaviour client
+       2) help access to the object without creating real object, but through other one 'proxy',
+       with some additional logic*/
+
+Using Proxy:
+1) Virtual Proxy - lazy initialization (loading real object only by request);
+2) Remote Proxy - perform remote real project locally;
+3) Security Proxy - providing controlled access to an object based on according client rights;
+4) Cache;
+5) Logging;
+6) Launching parallel processing threads;
+
+
+*app01 (cache model):
+-easy example show how two classes implements Interface 'Vocabulary';
+-one method getWord(String w) return some value;
+-class 'Word' (real class);
+-class 'WordProxy' simulating real (proxy class with some additional logic);
+-when client ('MainApp') work with Interface, he does not know what class he use (proxy/real);
+-logic in proxy assign as simulating cache mechanism;
+
+*app02 (additional function by proxy):
+-Proxy over an implemented interface with one method that prints the method's parameters to the console;
+-realSubject - implemented searchUserById(String id), and return String 'searchQuery';
+-proxy - implements same Interface, with adding some functionality (System.out.println("User id called = " + id););
+-very important to have in proxy class real object (as private final field 'SQLService sqlService'), and we init it
+from constructor;
+-simulating cache (HashMap), we receive users are in already in cache, or access to real object and using method for
+searching user by id from DB (sqlService.searchUserById(id)); put it to cache and return it;
+-!!! important to keep in mind that proxy is vulnerable spot
+
+-test our app:
+SELECT * FROM user where id = 111 --> working real object
+User id called = 111              --> add function
+SELECT * FROM user where id = 111 --> proxy
+
+*app03 (long loading data example):
+-Interface with one method: process();
+-class HeavyObjectImpl - implement this method and has one more static method with simulating slow motion activity;
+-class ProxyHeavyObjectImpl - has real object as private field and overridden method process();
+-and if real object does not initialized we do it; and invoke method process(); (illustrated by request init);
+-so we do not need to load data every time, only by request;
+-important to have 'static' field for target object (no downloading now long time!!!);
+MainApp03:
+HeavyObject heavyObject = new HeavyObjectImpl();
+        heavyObject.process();
+        /*  Loading init config...
+            Load complete!  */
+
+HeavyObject heavyObject = new ProxyHeavyObjectImpl();
+        heavyObject.process();
+        heavyObject.process();
+        heavyObject.process();
+        heavyObject.process();
+        /*  Loading init config...
+            Load complete!
+            Load complete!
+            Load complete!
+            Load complete!  */
+
+*app04:
+-same logic as before (imitation low speed loading report by first init);
+
+*app05:
+-Proxy over an implemented interface with one method that prints the method's parameters to the console.
+-   + tested done
+
+*** conclusion: ***
+presence of an real Object and implementation of the same interface is prerequisite of Proxy pattern;
