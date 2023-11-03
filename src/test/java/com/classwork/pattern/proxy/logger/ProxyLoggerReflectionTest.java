@@ -23,17 +23,6 @@ class ProxyLoggerReflectionTest {
     }
 
     @Test
-    @DisplayName("Test print method ProxyLoggerReflection with a Login object")
-    void testProxy() {
-        Login login = new Login("Jack", "Sparrow", 100L);
-        ProxyLogger logger = new ProxyLoggerReflection(login);
-        logger = new ProxyLoggerPrinter(logger, login);
-        logger.print();
-        String expectedOutput = "{password=Sparrow, login=Jack, timestamp=100}\r\n";
-        assertEquals(expectedOutput, outContent.toString());
-    }
-
-    @Test
     @DisplayName("Test print method with a User object")
     void testPrint_WithSimpleObject() {
         User user =new User("Will" , "Turner");

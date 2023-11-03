@@ -12,7 +12,7 @@ public class CarBuilderManual
     private boolean climateControl;
 
     @Override
-    public BuilderManual color(String color) {
+    public CarBuilderManual color(String color) {
         this.color = color;
         return this;
     }

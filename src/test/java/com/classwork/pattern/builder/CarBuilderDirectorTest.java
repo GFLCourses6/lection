@@ -61,4 +61,40 @@ class CarBuilderDirectorTest {
         assertFalse(car.isGps());
         assertFalse(car.isClimateControl());
     }
+
+    @Test
+    void testEqualsAndHashCodeCarBuilder() {
+        CarBuilder carBuilder = new CarBuilder();
+        String brand = "Toyota";
+        String model = "Camry";
+        Integer year = 2020;
+        String color = "Black";
+        Long price = 30000L;
+        boolean gps = true;
+        boolean climateControl = true;
+
+        carBuilder.brand(brand);
+        carBuilder.model(model);
+        carBuilder.year(year);
+        carBuilder.color(color);
+        carBuilder.price(price);
+        carBuilder.gps(gps);
+        carBuilder.climateControl(climateControl);
+        Car car = carBuilder.build();
+
+        BuilderManual builder = new CarBuilderManual();
+
+        Car carManual = builder
+                .color(color)
+                .model(model)
+                .year(year)
+                .brand(brand)
+                .price(price)
+                .climateControl(climateControl)
+                .gps(gps)
+                .build();
+
+        assertEquals(car, carManual);
+        assertEquals(car.hashCode(), carManual.hashCode());
+    }
 }

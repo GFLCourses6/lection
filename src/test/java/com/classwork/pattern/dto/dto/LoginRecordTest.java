@@ -1,44 +1,45 @@
 package com.classwork.pattern.dto.dto;
 
 import com.classwork.pattern.dto.model.dto.LoginRecord;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 public class LoginRecordTest {
 
     private LoginRecord login;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         login = new LoginRecord("William", "Turner", 10L);
     }
 
     @Test
-    public void testGetLogin() {
+    void testGetLogin() {
         assertEquals("William", login.getLogin());
     }
 
     @Test
-    public void testGetPassword() {
+    void testGetPassword() {
         assertEquals("Turner", login.getPassword());
     }
 
     @Test
-    public void testGetTimestamp() {
+    void testGetTimestamp() {
         assertEquals(10L, (long) login.getTimestamp());
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         String expectedToString = "{login: William, password: Turner, timestamp: 10}";
         assertEquals(expectedToString, login.toString());
     }
 
     @Test
-    public void testEquals() {
+    void testEquals() {
         LoginRecord will = new LoginRecord("William", "Turner", 10L);
         LoginRecord jack = new LoginRecord("Jack", "Sparrow", 20L);
 
@@ -47,12 +48,12 @@ public class LoginRecordTest {
     }
 
     @Test
-    public void testNotNullEquals() {
+    void testNotNullEquals() {
         assertNotEquals(login, null);
     }
 
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         LoginRecord will = new LoginRecord("William", "Turner", 10L);
         LoginRecord jack = new LoginRecord("Jack", "Sparrow", 20L);
 

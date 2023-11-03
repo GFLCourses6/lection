@@ -1,5 +1,11 @@
 ##
-Packages
+Patterns:
+  - Dto
+  - Builder
+  - Singleton
+  - Facade
+  - Proxy
+  - Factory
 
 #### Compile and run the code: User, Ship, Main
 `javac com/classwork/pattern/dto/entity/model/User.java com/classwork/pattern/dto/DtoApp.java && java com/classwork/pattern/dto/DtoApp`
@@ -41,3 +47,7 @@ creating the project's artifacts, and verifying their correctness.
 Report with Jacoco Tool with Coverage
 
 `mvn clean test jacoco:report`
+
+[![Java CI with Maven](https://github.com/GFLCourses6/lection/actions/workflows/maven.yml/badge.svg)](https://github.com/GFLCourses6/lection/actions/workflows/maven.yml)
+
+

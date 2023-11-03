@@ -1,17 +1,18 @@
 package com.classwork.pattern.dto.dto;
 
 import com.classwork.pattern.dto.model.dto.Login;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class LoginTest {
+class LoginTest {
 
     private Login login;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         login = new Login();
         login.setLogin("William");
         login.setPassword("Turner");
@@ -19,41 +20,41 @@ public class LoginTest {
     }
 
     @Test
-    public void testGetLogin() {
+    void testGetLogin() {
         assertEquals("William", login.getLogin());
     }
 
     @Test
-    public void testSetLogin() {
+    void testSetLogin() {
         login.setLogin("NewLogin");
         assertEquals("NewLogin", login.getLogin());
     }
 
     @Test
-    public void testGetPassword() {
+    void testGetPassword() {
         assertEquals("Turner", login.getPassword());
     }
 
     @Test
-    public void testGetTimestamp() {
+    void testGetTimestamp() {
         assertEquals(10L, (long) login.getTimestamp());
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         String expectedToString = "{login: William, password: Turner, timestamp: 10}";
         assertEquals(expectedToString, login.toString());
     }
 
     @Test
-    public void testEquals() {
+    void testEquals() {
         Login will = new Login("William", "Turner", 10L);
 
         assertEquals(login, will);
     }
 
     @Test
-    public void testNotEquals() {
+    void testNotEquals() {
         Login jack = new Login();
         jack.setLogin("Jack");
         jack.setPassword("Sparrow");
@@ -63,22 +64,22 @@ public class LoginTest {
     }
 
     @Test
-    public void testEqualsWithNullObject() {
+    void testEqualsWithNullObject() {
         assertNotEquals(null, login);
     }
 
     @Test
-    public void testEqualsWithSameObject() {
+    void testEqualsWithSameObject() {
         assertEquals(login, login);
     }
 
     @Test
-    public void testEqualsWithDifferentClass() {
+    void testEqualsWithDifferentClass() {
         assertNotEquals(login, login.toString());
     }
 
     @Test
-    public void testHashCode() {
+    void testHashCode() {
         Login will = new Login();
         will.setLogin("William");
         will.setPassword("Turner");

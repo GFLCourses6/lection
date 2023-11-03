@@ -2,14 +2,14 @@ package com.classwork.pattern.dto.mapper;
 
 import com.classwork.pattern.dto.model.dto.Login;
 import com.classwork.pattern.dto.model.entity.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserMapperTest {
+class UserMapperTest {
 
     @Test
-    public void testToLogin() {
+    void testToLogin() {
         User user = new User();
         user.setName("Jack");
         user.setSurname("Sparrow");
@@ -23,7 +23,7 @@ public class UserMapperTest {
     }
 
     @Test
-    public void testToUser() {
+    void testToUser() {
         Login login = new Login();
         login.setLogin("William");
         login.setPassword("Turner");

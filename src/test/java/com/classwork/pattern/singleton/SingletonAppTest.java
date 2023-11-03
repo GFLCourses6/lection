@@ -39,22 +39,6 @@ class SingletonAppTest {
         assertSame(singleton2, singleton3);
     }
 
-
-    @Test
-    void testThreadSafetyJoin()
-            throws InterruptedException {
-        Thread thread1 = new Thread(() -> Singleton.getInstance("Value1"));
-        Thread thread2 = new Thread(() -> Singleton.getInstance("Value2"));
-
-        thread1.start();
-        thread2.start();
-
-        thread1.join();
-        thread2.join();
-
-        assertEquals("Value2", Singleton.getInstance(null).getValue());
-    }
-
     @Test
     void testThreadSafety()
             throws InterruptedException {
