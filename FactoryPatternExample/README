@@ -1,0 +1,28 @@
+Factory Pattern:
+
+-provides an interface for creating objects, but delegates the responsibility of instantiation
+to subclasses or related classes;
+-it promotes loose coupling by abstracting the object creation process and provides a way
+to create different types of objects without exposing the underlying implementation details;
+
+
+
+*app01:
+-Factory should create one of two Singleton;
+-Parameters of factory method is a class - interface that is implemented by Singleton;
+-in factory we are providing to produce method with choice parameter where integer define
+which kind of class Singleton (they are implementing interface with method createSingleton()) will be created;
+-by terminal we can enter "1" if needed SingletonA, or any number of SingletonB;
+
+*app02:
+-almost the same example as app01;
+-in Factory we are compare as a parameter(String value) which of the class object will be created;
+
+*app03:
+-example of Factory pattern where factory classes provide the implementation for the createCar() method,
+where they create and return the specific car object;
+-factoryProducer - contains method, in case of type return concrete instance of factory;
+-FactoryTest:
+a)factoryProducerTest() - in case of type we got the right factory;
+b)sedanFactoryTest(), sportFactoryTest(), suvFactoryTest() - in case of type concrete factory we got the right
+car type class instance (Sedan.class, Sport.class, SUV.class);
