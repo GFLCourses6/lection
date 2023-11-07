@@ -1,0 +1,30 @@
+Abstract Factory Pattern:
+-Abstract Factory: This is an interface or an abstract class that declares the methods to create
+abstract product objects. It provides a common interface for creating different families of related
+objects.
+-Concrete Factories: These are the classes that implement the abstract factory interface and
+create specific instances of the product objects. Each concrete factory is responsible for creating
+products that belong to a specific category or family.
+
+*app01 (example as a theory to understand):
+-simple example of Abstract Factory pattern;
+-we have two families of related products: Car and Bike. We define abstract product interfaces
+for each category (Car and Bike) and provide concrete implementations for each product
+(SedanCar, SUVCar, RoadBike, and MountainBike);
+-interface VehicleFactory that declares methods to create a car and a bike;
+-two concrete factories, HondaFactory and FordFactory, each responsible for creating specific
+instances of the products;
+-in client code, we use the factories to create different products without knowing their specific
+implementations. This allows us to create families of related objects based on the selected factory;
+
+*app02 (lesson practice):
+-Vehicle - interface has method createVehicle(), and abstract class AbstractVehicle implements it;
+-AbstractVehicle - abstract class, so extends classes will have some common logic, but by specific implementation;
+I presenting three brands (Kia, Subaru and Toyota), in respective packages we have AbstractVehicles by brand;
+-each brand can create vehicle by type(mini, jeep, suv) and return it, we can see it in
+ToyotaFactory, KiaFactory, SubaruFactory;
+-VehicleAbstractFactory - class with static method; in case of logic mechanism creating vehicle in accordance of
+client input info (about type and brand); in that position we have basic assemble of vehicle;
+-on the next step, services come to play; for example if client want to change some basic components;
+-ClimateSystemService, GPSSystemService, WheelService represent logic of method update(vehicle, updateValue);
+-tests has been done for package service;
