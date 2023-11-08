@@ -8,7 +8,7 @@ public class ExpensiveObjectProxy
     @Override
     public void process() {
         if (object == null) {
-            object = new ExpensiveObjectImpl();
+            object = new ExpensiveObjectReal();
         }
         object.process();
     }

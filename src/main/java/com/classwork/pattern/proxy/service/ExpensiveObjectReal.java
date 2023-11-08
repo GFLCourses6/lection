@@ -1,8 +1,8 @@
 package com.classwork.pattern.proxy.service;
 
-public class ExpensiveObjectImpl
+public class ExpensiveObjectReal
         implements ExpensiveObject {
-    public ExpensiveObjectImpl() {
+    public ExpensiveObjectReal() {
         heavyInitConfig();
     }
 

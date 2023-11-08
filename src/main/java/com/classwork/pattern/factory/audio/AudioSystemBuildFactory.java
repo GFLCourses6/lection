@@ -1,8 +1,12 @@
 package com.classwork.pattern.factory.audio;
 
+import com.classwork.pattern.factory.BuildFactory;
 import com.classwork.pattern.factory.Vehicle;
 
-public class AudioSystemBuildFactory {
+import static com.classwork.pattern.factory.audio.AudioSystemFacade.getInstanceAudio;
+
+public class AudioSystemBuildFactory
+        implements BuildFactory {
 
     AudioSystemFacade facade;
     private final Vehicle vehicle;
@@ -10,10 +14,11 @@ public class AudioSystemBuildFactory {
     public AudioSystemBuildFactory(
             Vehicle vehicle) {
         this.vehicle = vehicle;
-        this.facade = AudioSystemFacade.getInstanceAudio();
+        this.facade = getInstanceAudio();
     }
 
-    public void upgrade(){
+    @Override
+    public void upgrade() {
         facade.upgrade(vehicle);
     }
 }
