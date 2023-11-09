@@ -4,10 +4,12 @@ import com.classwork.pattern.factory.Vehicle;
 import com.classwork.pattern.factory.kia.audio.KiaAudioSystem;
 import com.classwork.pattern.factory.kia.climate.KiaClimateControl;
 
+import java.util.Objects;
+
 public abstract class Kia
         implements Vehicle {
-    KiaAudioSystem kiaAudioSystem;
-    KiaClimateControl kiaClimateControl;
+    protected KiaAudioSystem kiaAudioSystem;
+    protected KiaClimateControl kiaClimateControl;
 
     protected Kia(
             final KiaAudioSystem kiaAudioSystem,
@@ -24,5 +26,20 @@ public abstract class Kia
     public void upgradeClimate(
             final KiaClimateControl climateControl) {
         this.kiaClimateControl = climateControl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Kia kia = (Kia) o;
+        return Objects.equals(kiaAudioSystem,
+                kia.kiaAudioSystem) && Objects.equals(kiaClimateControl,
+                kia.kiaClimateControl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kiaAudioSystem, kiaClimateControl);
     }
 }

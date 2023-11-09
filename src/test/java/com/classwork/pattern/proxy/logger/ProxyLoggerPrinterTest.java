@@ -1,10 +1,14 @@
 package com.classwork.pattern.proxy.logger;
 
+import com.classwork.pattern.dto.model.dto.Login;
 import com.classwork.pattern.dto.model.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -49,5 +53,24 @@ class ProxyLoggerPrinterTest {
         ProxyLoggerPrinter loggerPrinter = new ProxyLoggerPrinter(spyProxy, user);
         loggerPrinter.print();
         verify(spyProxy, times(1)).print();
+    }
+    @ParameterizedTest
+    @ArgumentsSource(LoginArgumentsProvider.class)
+    void testProxyLogger(String firstName, String lastName, Long id) {
+        Login login = new Login(firstName, lastName, id);
+        ProxyLogger logger = new ProxyLoggerReflection(login);
+        logger = new ProxyLoggerPrinter(logger, login);
+        assertDoesNotThrow(logger::print);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LoginArgumentsProvider.class)
+    void testPrint(String firstName, String lastName, Long id) {
+        Login login = new Login(firstName, lastName, id);
+        ProxyLogger proxyLogger = new ProxyLoggerReflection(login);
+        ProxyLoggerPrinter printer = new ProxyLoggerPrinter(proxyLogger, login);
+        assertDoesNotThrow(printer::print);
+        printer = new ProxyLoggerPrinter(null, login);
+        assertDoesNotThrow(printer::print);
     }
 }

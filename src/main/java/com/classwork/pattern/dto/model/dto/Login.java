@@ -3,25 +3,28 @@ package com.classwork.pattern.dto.model.dto;
 import java.util.Objects;
 
 public class Login {
-    private String login;
+    private String loginName;
     private String password;
     private Long timestamp;
 
     public Login() {
     }
 
-    public Login(String login, String password, Long timestamp) {
-        this.login = login;
+    public Login(
+            String loginName,
+            String password,
+            Long timestamp) {
+        this.loginName = loginName;
         this.password = password;
         this.timestamp = timestamp;
     }
 
     public String getLogin() {
-        return login;
+        return loginName;
     }
 
     public void setLogin(String login) {
-        this.login = login;
+        this.loginName = login;
     }
 
     public String getPassword() {
@@ -43,7 +46,7 @@ public class Login {
     @Override
     public String toString() {
         return String.format("{login: %s, password: %s, timestamp: %d}",
-                             login, password, timestamp);
+                loginName, password, timestamp);
     }
 
     @Override
@@ -55,13 +58,13 @@ public class Login {
             return false;
         }
         Login that = (Login) o;
-        return Objects.equals(login, that.login)
-                && Objects.equals(password, that.password)
-                && Objects.equals(timestamp, that.timestamp);
+        return Objects.equals(loginName, that.loginName) && Objects.equals(
+                password, that.password) && Objects.equals(timestamp,
+                that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, password, timestamp);
+        return Objects.hash(loginName, password, timestamp);
     }
 }

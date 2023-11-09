@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User
         implements Serializable {
@@ -15,10 +16,22 @@ public class User
     private Long timestamp;
     private List<Ship> ships;
 
-    public User(String name, String surname) {
+    public User(
+            String name,
+            String surname) {
         this.name = name;
         this.surname = surname;
-        this.ships = new ArrayList<Ship>();
+        this.ships = new ArrayList<>();
+        this.timestamp = Timestamp.valueOf(LocalDateTime.now()).getTime();
+    }
+
+    public User(
+            Integer id,
+            String name,
+            String surname) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
         this.timestamp = Timestamp.valueOf(LocalDateTime.now()).getTime();
     }
 
@@ -67,8 +80,22 @@ public class User
 
     @Override
     public String toString() {
-        return String.format(
-                "{name: %s, surname: %s}",
-                getName(), getSurname());
+        return "{surname=%s, name=%s, id=%s, timestamp=%d}"
+                .formatted(surname, name, id, timestamp);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(name,
+                user.name) && Objects.equals(surname,
+                user.surname) && Objects.equals(ships, user.ships);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, ships);
     }
 }

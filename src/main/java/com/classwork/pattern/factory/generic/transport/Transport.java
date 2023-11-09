@@ -4,6 +4,8 @@ import com.classwork.pattern.factory.Vehicle;
 import com.classwork.pattern.factory.generic.driver.Driver;
 import com.classwork.pattern.factory.generic.navigator.GpsNavigator;
 
+import java.util.Objects;
+
 public abstract class Transport<T>
         implements Vehicle {
 
@@ -26,5 +28,19 @@ public abstract class Transport<T>
     public void updateNavigator(
             final GpsNavigator<T> navigator) {
         this.navigator = navigator;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Objects.equals(driver, transport.driver) && Objects.equals(
+                navigator, transport.navigator);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driver, navigator);
     }
 }

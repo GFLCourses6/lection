@@ -1,6 +1,9 @@
 package com.classwork.pattern.factory.toyota.creator;
 
 import com.classwork.pattern.factory.Vehicle;
+import com.classwork.pattern.factory.VehicleBuildFactory;
+import com.classwork.pattern.factory.VehicleFactory;
+import com.classwork.pattern.factory.climate.ClimateControlBuildFactory;
 import com.classwork.pattern.factory.toyota.climate.BasicToyotaClimateControl;
 import com.classwork.pattern.factory.toyota.climate.MultiZoneToyotaClimateControl;
 import com.classwork.pattern.factory.toyota.climate.ToyotaClimateControl;
@@ -17,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ToyotaFactoryTest {
 
-    private ToyotaFactory toyotaFactory;
+    private VehicleFactory toyotaFactory;
     private ByteArrayOutputStream outContent;
     private ToyotaClimateControlBuilder toyotaClimateControlBuilder;
 
@@ -90,4 +93,18 @@ class ToyotaFactoryTest {
         assertNotNull(multiZoneClimateControl);
     }
 
+    @Test
+    void testToyotaFactory() {
+        VehicleBuildFactory buildToyotaFactory = new VehicleBuildFactory(toyotaFactory);
+
+        Vehicle truck = buildToyotaFactory.buildTruck();
+        ClimateControlBuildFactory climateControlBuildFactory = new ClimateControlBuildFactory(truck);
+        climateControlBuildFactory.upgrade();
+        assertNotNull(truck);
+
+        Vehicle bus = buildToyotaFactory.buildBus();
+        assertNotNull(bus);
+        Vehicle car = buildToyotaFactory.buildCar();
+        assertNotNull(car);
+    }
 }

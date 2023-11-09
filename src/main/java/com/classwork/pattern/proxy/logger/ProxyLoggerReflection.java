@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProxyLoggerReflection implements ProxyLogger {
-    private final Map<String, String> cache = new HashMap<>();
+    private final Map<String, String> tree = new HashMap<>();
 
     public <T> ProxyLoggerReflection(T t) {
         reflectParams(t);
@@ -18,7 +18,7 @@ public class ProxyLoggerReflection implements ProxyLogger {
             try {
                 Object fieldValue = field.get(t);
                 if (fieldValue != null) {
-                    cache.put(field.getName(), fieldValue.toString());
+                    tree.put(field.getName(), fieldValue.toString());
                 }
             } catch (IllegalAccessException e) {
                 System.err.println(e.getMessage());
@@ -28,6 +28,10 @@ public class ProxyLoggerReflection implements ProxyLogger {
 
     @Override
     public void print() {
-        System.out.println(cache);
+        System.out.println(tree);
+    }
+
+    public Map<String, String> getTree() {
+        return tree;
     }
 }

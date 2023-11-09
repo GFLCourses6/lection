@@ -19,17 +19,17 @@ public class LoginRecordTest {
 
     @Test
     void testGetLogin() {
-        assertEquals("William", login.getLogin());
+        assertEquals("William", login.login());
     }
 
     @Test
     void testGetPassword() {
-        assertEquals("Turner", login.getPassword());
+        assertEquals("Turner", login.password());
     }
 
     @Test
     void testGetTimestamp() {
-        assertEquals(10L, (long) login.getTimestamp());
+        assertEquals(10L, (long) login.timestamp());
     }
 
     @Test

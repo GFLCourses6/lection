@@ -1,9 +1,12 @@
 package com.classwork.pattern.factory.kia.creator;
 
 import com.classwork.pattern.factory.Vehicle;
+import com.classwork.pattern.factory.VehicleBuildFactory;
+import com.classwork.pattern.factory.VehicleFactory;
+import com.classwork.pattern.factory.audio.AudioSystemBuildFactory;
 import com.classwork.pattern.factory.kia.climate.BasicKiaClimateControl;
-import com.classwork.pattern.factory.kia.climate.KiaClimateControlBuilder;
 import com.classwork.pattern.factory.kia.climate.KiaClimateControl;
+import com.classwork.pattern.factory.kia.climate.KiaClimateControlBuilder;
 import com.classwork.pattern.factory.kia.climate.MultiZoneKiaClimateControl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class KiaFactoryTest {
-    private KiaFactory kiaFactory;
+    private VehicleFactory kiaFactory;
     private ByteArrayOutputStream outContent;
     private KiaClimateControlBuilder kiaClimateControlBuilder;
 
@@ -87,5 +90,18 @@ class KiaFactoryTest {
         assertTrue(multiZoneClimateControl instanceof MultiZoneKiaClimateControl);
         assertEquals("Multi-Zone Kia Climate Control", outContent.toString().trim());
         assertNotNull(multiZoneClimateControl);
+    }
+
+    @Test
+    void testKiaFactory() {
+        VehicleBuildFactory buildKiaFactory = new VehicleBuildFactory(kiaFactory);
+        Vehicle car = buildKiaFactory.buildCar();
+        assertNotNull(car);
+        AudioSystemBuildFactory audioSystemFactory = new AudioSystemBuildFactory(car);
+        audioSystemFactory.upgrade();
+        Vehicle truck = buildKiaFactory.buildTruck();
+        assertNotNull(truck);
+        Vehicle bus = buildKiaFactory.buildBus();
+        assertNotNull(bus);
     }
 }

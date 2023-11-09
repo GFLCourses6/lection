@@ -2,7 +2,10 @@ package com.classwork.pattern.factory.generic.transport;
 
 import com.classwork.pattern.factory.generic.navigator.GpsNavigatorFactory;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class VehicleCreatorTest {
@@ -13,7 +16,9 @@ class VehicleCreatorTest {
         Transport<Bmw> bmw = factory.create("Plane");
         GpsNavigatorFactory<Bmw> navigatorFactory = new GpsNavigatorFactory<>();
         bmw.updateNavigator(navigatorFactory.create("Integrate"));
-        System.out.println(bmw);
+        String expect = "Plane{driver=ManualDrive, "
+                + "navigator=StandAloneGpsNavigator}";
+        assertEquals(expect, bmw.toString());
     }
 
     @Test
@@ -24,4 +29,11 @@ class VehicleCreatorTest {
         System.out.println(bmw.getClass());
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(VehicleArgumentsProvider.class)
+    void testCreateVehicle(String type, Class<?> expectedClass) {
+        VehicleCreator<Bmw> vehicleCreator = new VehicleCreator<>();
+        Transport<Bmw> vehicle = vehicleCreator.create(type);
+        assertTrue(expectedClass.isInstance(vehicle));
+    }
 }
