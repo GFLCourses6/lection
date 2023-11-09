@@ -1,15 +1,15 @@
-package com.gfl.prokhnov.singleton;
+package com.gfl.prokhnov.singleton.threadSafe;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-public class SingletonApp {
+public class ThreadSafeSingletonApp {
 
-    private static final Logger LOGGER = LogManager.getLogger(SingletonApp.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(ThreadSafeSingletonApp.class.getName());
 
     public static void main(String[] args) {
-        SingletonApp singletonApp = new SingletonApp();
-        singletonApp.run();
+        ThreadSafeSingletonApp threadSafeSingletonApp = new ThreadSafeSingletonApp();
+        threadSafeSingletonApp.run();
 
     }
 
@@ -24,7 +24,7 @@ public class SingletonApp {
 
         @Override
         public void run() {
-            Singleton test1 = Singleton.getInstance("One");
+            ThreadSafeSingleton test1 = ThreadSafeSingleton.getInstance("One");
             LOGGER.info(test1.getValue());
         }
     }
@@ -33,7 +33,7 @@ public class SingletonApp {
 
         @Override
         public void run() {
-            Singleton test1 = Singleton.getInstance("Two");
+            ThreadSafeSingleton test1 = ThreadSafeSingleton.getInstance("Two");
             LOGGER.info(test1.getValue());
         }
     }

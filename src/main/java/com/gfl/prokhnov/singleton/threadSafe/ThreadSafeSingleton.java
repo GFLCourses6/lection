@@ -1,10 +1,10 @@
-package com.gfl.prokhnov.singleton;
+package com.gfl.prokhnov.singleton.threadSafe;
 
-public class Singleton {
-    private static Singleton instance;
+public class ThreadSafeSingleton {
+    private static ThreadSafeSingleton instance;
     private String value;
 
-    public Singleton(String value) {
+    public ThreadSafeSingleton(String value) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -13,10 +13,10 @@ public class Singleton {
         this.value = value;
     }
 
-    public static Singleton getInstance(String value) {
-        synchronized ((Singleton.class)) {
+    public static ThreadSafeSingleton getInstance(String value) {
+        synchronized ((ThreadSafeSingleton.class)) {
             if (instance == null) {
-                instance = new Singleton(value);
+                instance = new ThreadSafeSingleton(value);
             }
         }
         return instance;
