@@ -3,33 +3,36 @@ package com.gfl.prokhnov.dto.entity;
 import java.util.Objects;
 
 public class User {
-    private long id;
+    private Long id;
     private String login;
     private String password;
     private Long timestamp;
     private String email;
     private String firstName;
     private String lastName;
-    private int age;
+    private Integer age;
 
     public User() {
     }
 
-    public User(long id, String login, String password, String email, String firstName, String lastName, int age) {
+    public User(Long id, String login, String password,
+                Long timestamp, String email, String firstName,
+                String lastName, Integer age) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.timestamp = timestamp;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,6 +51,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     public String getEmail() {
         return email;
@@ -73,11 +77,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -94,8 +98,8 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
-                age == user.age &&
+        return Objects.equals(id, user.id) &&
+                Objects.equals(age, user.age) &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(timestamp, user.timestamp) &&

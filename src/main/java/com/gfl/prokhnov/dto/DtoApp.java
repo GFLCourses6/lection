@@ -16,7 +16,7 @@ public class DtoApp {
     }
 
     private void run(){
-        User user = new User(1,"userLogin","userPassword","user@gmail.com","userFirstName", "userLastName", 30);
+        User user = new User(1L,"userLogin","userPassword", 1000L,"user@gmail.com","userFirstName", "userLastName", 30);
         LOGGER.info(user);
         UserDto userDtoFromUser = UserMapper.userToUserDto(user);
         LOGGER.info(userDtoFromUser);
