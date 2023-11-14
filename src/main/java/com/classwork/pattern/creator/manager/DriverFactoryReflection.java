@@ -1,19 +1,22 @@
-package com.classwork.pattern.creator;
+package com.classwork.pattern.creator.manager;
 
-import com.classwork.pattern.creator.model.DriverConfig;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class DriverFactory {
+public class DriverFactoryReflection {
+
+    private DriverFactoryReflection() {
+    }
 
     private static final Map<Class<? extends Driver>, Driver> drivers = new HashMap<>();
 
     public static synchronized <T extends Driver> T getDriver(
             Class<T> driverClass,
-            DriverConfig driverConfig,
+            WebDriverConfig webDriverConfig,
             ProxyConfigHolder proxyConfigHolder) {
         if (drivers.containsKey(driverClass)) {
             return driverClass.cast(drivers.get(driverClass));
@@ -21,8 +24,8 @@ public abstract class DriverFactory {
 
         try {
             Constructor<T> constructor = driverClass.getDeclaredConstructor(
-                    DriverConfig.class, ProxyConfigHolder.class);
-            T driver = constructor.newInstance(driverConfig, proxyConfigHolder);
+                    WebDriverConfig.class, ProxyConfigHolder.class);
+            T driver = constructor.newInstance(webDriverConfig, proxyConfigHolder);
             drivers.put(driverClass, driver);
             return driver;
         } catch (Exception e) {

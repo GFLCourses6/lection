@@ -17,7 +17,8 @@ public class DbConnectionPostgreSqlService
 
     private final TransactionManagerService transactionManager;
 
-    private static final Logger LOGGER = LogManager.getLogger(DbConnectionPostgreSqlService.class);
+    private static final Logger LOGGER =
+            LogManager.getLogger(DbConnectionPostgreSqlService.class);
 
     public DbConnectionPostgreSqlService() {
         this.dataSource = new DataSourceManager().getDataSource();
@@ -26,13 +27,23 @@ public class DbConnectionPostgreSqlService
 
     @Override
     public String invoke(String sql) {
-        Connection connection = null;
-        try {
-            connection = dataSource.getConnection();
+        try (Connection connection = dataSource.getConnection()) {
             transactionManager.begin();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            return findBy(sql, connection);
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+            transactionManager.rollback();
+        } finally {
+            transactionManager.close();
+        }
+        return null;
+    }
 
+    private String findBy(
+            String sql,
+            Connection connection) {
+        try (PreparedStatement statement = connection.prepareStatement(
+                sql); ResultSet resultSet = statement.executeQuery()) {
             if (resultSet.next()) {
                 String result = resultSet.getString(1);
                 transactionManager.commit();
@@ -41,11 +52,7 @@ public class DbConnectionPostgreSqlService
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
             transactionManager.rollback();
-        } finally {
-            if (connection != null) {
-                transactionManager.close();
-            }
         }
-        return null;
+        return "";
     }
 }

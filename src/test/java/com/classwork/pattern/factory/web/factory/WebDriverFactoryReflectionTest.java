@@ -1,7 +1,7 @@
 package com.classwork.pattern.factory.web.factory;
 
 import com.classwork.pattern.creator.edge.EdgeWebDriver;
-import com.classwork.pattern.creator.model.DriverConfig;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,15 +12,15 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-class WebDriverFactoryTest {
-    private DriverConfig config;
+class WebDriverFactoryReflectionTest {
+    private WebDriverConfig config;
     private ProxyConfigHolder holder;
     private EdgeWebDriver edgeWebDriver;
     private final String site = "https://www.youtube.com/";
 
     @BeforeEach
     void setUp() {
-        config = mock(DriverConfig.class);
+        config = mock(WebDriverConfig.class);
         holder = mock(ProxyConfigHolder.class);
         edgeWebDriver = mock(EdgeWebDriver.class);
     }

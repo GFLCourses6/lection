@@ -1,21 +1,21 @@
 package com.classwork.pattern.creator.chrome;
 
+import com.classwork.pattern.creator.manager.Driver;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
-import com.classwork.pattern.creator.Driver;
-import com.classwork.pattern.creator.model.DriverConfig;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ChromeWebDriver
         implements Driver {
 
-    private final DriverConfig driverConfig;
+    private final WebDriverConfig webDriverConfig;
     private final ProxyConfigHolder proxyConfigHolder;
 
     public ChromeWebDriver(
-            DriverConfig driverConfig,
+            WebDriverConfig webDriverConfig,
             ProxyConfigHolder proxyConfigHolder) {
-        this.driverConfig = driverConfig;
+        this.webDriverConfig = webDriverConfig;
         this.proxyConfigHolder = proxyConfigHolder;
     }
 

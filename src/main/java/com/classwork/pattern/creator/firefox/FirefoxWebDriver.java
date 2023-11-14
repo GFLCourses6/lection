@@ -1,7 +1,7 @@
 package com.classwork.pattern.creator.firefox;
 
-import com.classwork.pattern.creator.Driver;
-import com.classwork.pattern.creator.model.DriverConfig;
+import com.classwork.pattern.creator.manager.Driver;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,11 +10,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FirefoxWebDriver
         implements Driver {
 
-    private static DriverConfig config;
+    private static WebDriverConfig config;
     private static ProxyConfigHolder holder;
 
     public FirefoxWebDriver(
-            DriverConfig config,
+            WebDriverConfig config,
             ProxyConfigHolder holder) {
         FirefoxWebDriver.config = config;
         FirefoxWebDriver.holder = holder;

@@ -1,6 +1,6 @@
 package com.classwork.pattern.creator.edge;
 
-import com.classwork.pattern.creator.model.DriverConfig;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
 import org.openqa.selenium.edge.EdgeOptions;
 
@@ -9,13 +9,13 @@ import java.util.Objects;
 public class EdgeOptionsService
         extends EdgeOptions {
 
-    private final DriverConfig driverConfig;
+    private final WebDriverConfig webDriverConfig;
     private final ProxyConfigHolder proxyConfigHolder;
 
     public EdgeOptionsService(
-            DriverConfig driverConfig,
+            WebDriverConfig webDriverConfig,
             ProxyConfigHolder proxyConfigHolder) {
-        this.driverConfig = driverConfig;
+        this.webDriverConfig = webDriverConfig;
         this.proxyConfigHolder = proxyConfigHolder;
         this.addArguments("--remote-allow-origins=*");
     }
@@ -26,13 +26,13 @@ public class EdgeOptionsService
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         EdgeOptionsService that = (EdgeOptionsService) o;
-        return Objects.equals(driverConfig,
-                that.driverConfig) && Objects.equals(proxyConfigHolder,
+        return Objects.equals(webDriverConfig,
+                that.webDriverConfig) && Objects.equals(proxyConfigHolder,
                 that.proxyConfigHolder);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), driverConfig, proxyConfigHolder);
+        return Objects.hash(super.hashCode(), webDriverConfig, proxyConfigHolder);
     }
 }

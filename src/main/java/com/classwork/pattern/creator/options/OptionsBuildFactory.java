@@ -1,36 +1,36 @@
 package com.classwork.pattern.creator.options;
 
-import com.classwork.pattern.creator.model.DriverConfig;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class OptionsBuildFactory {
 
-    private static DriverConfig driverConfig;
+    private static WebDriverConfig webDriverConfig;
     private static ProxyConfigHolder holder;
 
     public OptionsBuildFactory(
-            DriverConfig driverConfig,
+            WebDriverConfig webDriverConfig,
             ProxyConfigHolder holder) {
-        OptionsBuildFactory.driverConfig = driverConfig;
+        OptionsBuildFactory.webDriverConfig = webDriverConfig;
         OptionsBuildFactory.holder = holder;
     }
 
     private static final class EdgeOptionsHolder {
         private static final EdgeOptions INSTANCE =
-                new CreateEdgeOptions(driverConfig, holder);
+                new CreateEdgeOptions(webDriverConfig, holder);
     }
 
     private static final class FirefoxOptionsHolder {
         private static final FirefoxOptions INSTANCE =
-                new CreateFirefoxOptions(driverConfig, holder);
+                new CreateFirefoxOptions(webDriverConfig, holder);
     }
 
     private static final class ChromeOptionsHolder {
         private static final ChromeOptions INSTANCE =
-                new CreateChromeOptions(driverConfig, holder);
+                new CreateChromeOptions(webDriverConfig, holder);
     }
 
     public static EdgeOptions getEdgeOptions() {

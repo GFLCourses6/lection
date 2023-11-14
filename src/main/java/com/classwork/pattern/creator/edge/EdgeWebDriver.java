@@ -1,7 +1,7 @@
 package com.classwork.pattern.creator.edge;
 
-import com.classwork.pattern.creator.Driver;
-import com.classwork.pattern.creator.model.DriverConfig;
+import com.classwork.pattern.creator.manager.Driver;
+import com.classwork.pattern.creator.model.WebDriverConfig;
 import com.classwork.pattern.creator.model.ProxyConfigHolder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -11,11 +11,11 @@ import static com.classwork.pattern.creator.options.OptionsBuildFactory.getEdgeO
 public class EdgeWebDriver
         implements Driver {
 
-    private final DriverConfig config;
+    private final WebDriverConfig config;
     private final ProxyConfigHolder holder;
 
     public EdgeWebDriver(
-            DriverConfig config,
+            WebDriverConfig config,
             ProxyConfigHolder holder) {
         this.config = config;
         this.holder = holder;
