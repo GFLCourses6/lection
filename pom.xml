@@ -22,6 +22,8 @@
         <module>sql</module>
         <module>builder</module>
         <module>singleton</module>
+        <module>threads</module>
+        <module>subscriber</module>
     </modules>
 
     <properties>
