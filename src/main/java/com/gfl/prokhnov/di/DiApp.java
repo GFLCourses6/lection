@@ -5,7 +5,6 @@ import com.gfl.prokhnov.di.factory.DIFactory;
 import com.gfl.prokhnov.di.service.DbIntegrationService;
 import com.gfl.prokhnov.di.service.FileIntegrationService;
 import com.gfl.prokhnov.di.service.StringIntegrationService;
-import com.gfl.prokhnov.di.service.StringIntegrationServiceImpl;
 
 public class DiApp {
     public static void main(String[] args) {
