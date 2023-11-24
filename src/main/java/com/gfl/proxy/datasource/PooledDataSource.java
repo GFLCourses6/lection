@@ -24,7 +24,7 @@ public class PooledDataSource extends PGSimpleDataSource {
         semaphore = new Semaphore(INITIAL_POOL_SIZE, true);
 
         // insert proxy connections into connection pool
-        enlargeConnectionPool(INITIAL_POOL_SIZE);
+        fillConnectionPool(INITIAL_POOL_SIZE);
     }
 
     /**
@@ -46,7 +46,7 @@ public class PooledDataSource extends PGSimpleDataSource {
     }
 
     @SneakyThrows
-    private void enlargeConnectionPool(int size) {
+    private void fillConnectionPool(int size) {
         for (int i = 0; i < size; i++) {
             Connection proxyConnection = new ProxyConnection(super.getConnection(), connectionPool, semaphore);
             connectionPool.add(proxyConnection);
