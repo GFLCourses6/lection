@@ -1,5 +1,7 @@
 package org.example.builder;
 
+import java.util.Objects;
+
 public class Car {
     private String brand;
     private String model;
@@ -40,6 +42,91 @@ public class Car {
                 .append(", engineType=").append(engineType).append('\'')
                 .append(", fuelType=").append(fuelType)
                 .append('}').toString();
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public void setGps(String gps) {
+        this.gps = gps;
+    }
+
+    public void setHasClimateControl(boolean hasClimateControl) {
+        this.hasClimateControl = hasClimateControl;
+    }
+
+    public void setEngineType(String engineType) {
+        this.engineType = engineType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public String getGps() {
+        return gps;
+    }
+
+    public boolean isHasClimateControl() {
+        return hasClimateControl;
+    }
+
+    public String getEngineType() {
+        return engineType;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return hasClimateControl == car.hasClimateControl && Objects.equals(brand, car.brand) && Objects.equals(model, car.model) && Objects.equals(color, car.color) && Objects.equals(price, car.price) && Objects.equals(year, car.year) && Objects.equals(gps, car.gps) && Objects.equals(engineType, car.engineType) && Objects.equals(fuelType, car.fuelType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, color, price, year, gps, hasClimateControl, engineType, fuelType);
     }
 
     public static class CarBuilder implements Builder{
