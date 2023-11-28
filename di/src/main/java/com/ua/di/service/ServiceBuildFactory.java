@@ -20,7 +20,7 @@ public class ServiceBuildFactory
     Set<Class<?>> collect;
 
     public ServiceBuildFactory() {
-        Reflections reflections = new Reflections("com.classwork.pattern.di",
+        Reflections reflections = new Reflections("com.ua.pattern.di",
                 new SubTypesScanner(false));
         collect = new HashSet<>(reflections.getSubTypesOf(Object.class));
         for (Class<?> clazz : collect) {

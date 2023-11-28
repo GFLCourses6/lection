@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.classwork</groupId>
+    <groupId>com.ua</groupId>
     <artifactId>lection</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -24,6 +24,7 @@
         <module>singleton</module>
         <module>threads</module>
         <module>subscriber</module>
+        <module>tester</module>
     </modules>
 
     <properties>

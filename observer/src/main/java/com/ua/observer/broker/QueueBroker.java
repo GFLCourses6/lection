@@ -33,9 +33,8 @@ public class QueueBroker
     public void subscribe(
             String topic,
             Subscriber subscriber) {
-        subscribers
-                .computeIfAbsent(topic, s -> new LinkedList<>())
-                .add(subscriber);
+        subscribers.computeIfAbsent(topic, s -> new LinkedList<>())
+                   .add(subscriber);
     }
 
     @Override
@@ -49,9 +48,9 @@ public class QueueBroker
     public void notifySubscribers(
             String topic,
             Event event) {
-        for (Subscriber subscriber : subscribers.getOrDefault(topic,
-                new LinkedList<>())) {
-            subscriber.update(event);
+        eventQueue.offer(event);
+        for (Subscriber subscriber : subscribers.getOrDefault(topic, new LinkedList<>())) {
+            subscriber.update(eventQueue.poll());
         }
     }
 
@@ -59,9 +58,8 @@ public class QueueBroker
     public void notifySubscribers(
             String topic,
             Message message) {
-        subscribers
-                .getOrDefault(topic, new LinkedList<>())
-                .forEach(subscriber -> subscriber.receiveMessage(message));
+        subscribers.getOrDefault(topic, new LinkedList<>())
+                   .forEach(subscriber -> subscriber.receiveMessage(message));
     }
 
     @Override
@@ -69,6 +67,19 @@ public class QueueBroker
             String topic,
             Message message) {
         eventQueue.offer(new Event(message));
-        notifySubscribers(topic, message);
+        notifySubscribers(topic, eventQueue.poll());
+    }
+
+    @Override
+    public Queue<Event> getEventQueue() {
+        return eventQueue;
+    }
+
+    public Map<String, List<Subscriber>> getSubscribers() {
+        return subscribers;
+    }
+
+    public Map<String, Publisher> getPublishers() {
+        return publishers;
     }
 }

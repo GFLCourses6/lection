@@ -19,7 +19,7 @@ public class DIApp {
         AbstractFactory abstractFactory = new DIFactory();
         Set<Class<?>> collect;
 
-        Reflections reflections = new Reflections("com.classwork.pattern.di",
+        Reflections reflections = new Reflections("com.ua.pattern.di",
                 new SubTypesScanner(false));
         collect = new HashSet<>(reflections.getSubTypesOf(Object.class));
         for (Class<?> clazz : collect) {

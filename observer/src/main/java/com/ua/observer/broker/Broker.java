@@ -3,6 +3,8 @@ package com.ua.observer.broker;
 import com.ua.observer.publisher.Publisher;
 import com.ua.observer.subscriber.Subscriber;
 
+import java.util.Queue;
+
 public interface Broker {
 
     void addPublisher(
@@ -30,4 +32,6 @@ public interface Broker {
     void publishEvent(
             String topic,
             Message message);
+
+    Queue<Event> getEventQueue();
 }
