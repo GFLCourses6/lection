@@ -1,0 +1,33 @@
+services:
+-our services and implementation;
+-one we going to implement by the way (DBIntegrationService);
+
+factory:
+-AbstractFactory(universal class) response to create and handle our services;
+-implementation here as well;
+
+*String: 1 block if: create instance of the class;
+*File: 2 block if: create as singleton, so we can handle lifecycle of the instance created;
+    for singleton vocabulary we have private HashMap(), with key=Class, value=Object
+*DB: 3 block if: creating and implementing object on the way
+
+main:
+-MainApp - start app class
+    (*)bad example:
+    when we create directly implementation class instance (using key word 'new');
+
+
+    *best way:
+    -InversionOfControl principle (our factory create instances of classes):
+    //StringIntegrationService stringIntegrationService = factory.create(StringIntegrationService.class);
+    //FileIntegrationService fileIntegrationService = factory.create(FileIntegrationService.class);
+    //DBIntegrationService dbIntegrationService = factory.create(DBIntegrationService.class);
+
+    -DependencyInjection:
+    //AbstractFactory factory = new AbstractFactoryImpl();
+
+
+
+
+
+
