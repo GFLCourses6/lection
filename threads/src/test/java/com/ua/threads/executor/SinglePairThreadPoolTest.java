@@ -1,5 +1,7 @@
-package com.ua.threads;
+package com.ua.threads.executor;
 
+import com.ua.threads.executor.MultiThreadPool;
+import com.ua.threads.executor.SinglePairThreadPool;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

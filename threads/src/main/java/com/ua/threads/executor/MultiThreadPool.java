@@ -1,15 +1,17 @@
-package com.ua.threads;
+package com.ua.threads.executor;
 
-import java.util.concurrent.CompletionService;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static com.ua.threads.Runner.getTaskSubmitter;
+import static com.ua.threads.executor.Runner.getTaskSubmitter;
 
-public class SinglePairThreadPool {
+public class MultiThreadPool {
+
     protected static final CountDownLatch COL = new CountDownLatch(8);
 
     public void threadAndQueue()
@@ -24,28 +26,10 @@ public class SinglePairThreadPool {
 
         int workers = 6;
         workerExecutor = Executors.newFixedThreadPool(workers);
-        CompletionService<Void> completionService =
-                getVoidCompletionService(workerExecutor, workers);
 
+        List<Future<Void>> futures = new ArrayList<>();
         for (int i = 0; i < workers; i++) {
-            completionService.take();
-        }
-
-        executorService.shutdown();
-        workerExecutor.shutdown();
-
-        executorService.awaitTermination(10, TimeUnit.SECONDS);
-        workerExecutor.awaitTermination(10, TimeUnit.SECONDS);
-    }
-
-    private static CompletionService<Void> getVoidCompletionService(
-            ExecutorService workerExecutor,
-            int workers) {
-        CompletionService<Void> completionService =
-                new ExecutorCompletionService<>(workerExecutor);
-
-        for (int i = 0; i < workers; i++) {
-            completionService.submit(() -> {
+            futures.add(workerExecutor.submit(() -> {
                 try {
                     Runner.start();
                 } catch (InterruptedException e) {
@@ -54,8 +38,17 @@ public class SinglePairThreadPool {
                     COL.countDown();
                 }
                 return null;
-            });
+            }));
         }
-        return completionService;
+
+        for (Future<Void> future : futures) {
+            future.get();
+        }
+
+        executorService.shutdown();
+        workerExecutor.shutdown();
+
+        executorService.awaitTermination(10, TimeUnit.SECONDS);
+        workerExecutor.awaitTermination(10, TimeUnit.SECONDS);
     }
 }

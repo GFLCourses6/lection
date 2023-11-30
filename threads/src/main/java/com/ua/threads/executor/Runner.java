@@ -1,4 +1,4 @@
-package com.ua.threads;
+package com.ua.threads.executor;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
@@ -10,7 +10,7 @@ public class Runner {
     public static final BlockingQueue<Pair<String, String>> TASK_QUEUE =
             new LinkedBlockingQueue<>(QUEUE_CAPACITY);
 
-    protected static void start()
+    public static void start()
             throws InterruptedException {
         while (true) {
             Pair<String, String> task = TASK_QUEUE.poll(1, TimeUnit.SECONDS);
@@ -23,12 +23,11 @@ public class Runner {
                               Thread.currentThread().getName(),
                               task.key(),
                               task.value());
-
             TimeUnit.SECONDS.sleep(4);
         }
     }
 
-    protected static Runnable getTaskSubmitter(CountDownLatch COL) {
+    public static Runnable getTaskSubmitter(CountDownLatch COL) {
         return () -> {
             try {
                 System.out.printf("%s Started task submit%n",
