@@ -1,0 +1,10 @@
+The aim of the project to show how Threads works by using ExecutorService;
+
+-lection_example:
+    -ThreadPoolAndQueue //ConcurrentLinkedQueue
+    -Main;
+
+-practice:
+    -ThreadPoolAndQueue2 //LinkedBlockingQueue
+    -Main;
+
