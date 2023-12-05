@@ -1,5 +1,6 @@
 package com.gfl.prokhnov.singleton.threadSafe;
 
+import com.gfl.prokhnov.example.patterns.singleton.threadSafe.ThreadSafeSingleton;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

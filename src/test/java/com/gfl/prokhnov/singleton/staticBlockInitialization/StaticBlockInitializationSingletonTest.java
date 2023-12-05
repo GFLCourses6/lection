@@ -1,5 +1,6 @@
 package com.gfl.prokhnov.singleton.staticBlockInitialization;
 
+import com.gfl.prokhnov.example.patterns.singleton.staticBlockInitialization.StaticBlockInitializationSingleton;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

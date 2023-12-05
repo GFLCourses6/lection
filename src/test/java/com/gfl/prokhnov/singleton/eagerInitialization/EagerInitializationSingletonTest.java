@@ -1,5 +1,6 @@
 package com.gfl.prokhnov.singleton.eagerInitialization;
 
+import com.gfl.prokhnov.example.patterns.singleton.eagerInitialization.EagerInitializationSingleton;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

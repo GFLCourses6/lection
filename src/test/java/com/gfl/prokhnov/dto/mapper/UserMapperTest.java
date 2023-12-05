@@ -1,7 +1,8 @@
 package com.gfl.prokhnov.dto.mapper;
 
-import com.gfl.prokhnov.dto.dto.UserDto;
-import com.gfl.prokhnov.dto.entity.User;
+import com.gfl.prokhnov.example.patterns.dto.dto.UserDto;
+import com.gfl.prokhnov.example.patterns.dto.entity.User;
+import com.gfl.prokhnov.example.patterns.dto.mapper.UserMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
