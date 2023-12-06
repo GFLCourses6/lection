@@ -1,0 +1,26 @@
+How does Java Web Application is related to Web Drivers? Chrome for example?
+
+Java Web Application and web drivers, such as ChromeDriver for Chrome, are related in the context of automated testing 
+of web applications.
+
+Java Web Application:
+A Java Web Application is a software application that runs on a web server and is accessed by users over the internet 
+through a web browser. It is built using Java technologies like Servlets, JSP (JavaServer Pages), and Java Frameworks 
+like Spring or Java EE. Java Web Applications are developed to provide dynamic and interactive web content.
+
+Web Drivers:
+Web drivers, such as ChromeDriver, are automation tools that allow developers to control web browsers programmatically. 
+They provide APIs to initiate and interact with web browsers like Chrome, Firefox, or Safari. Using web drivers, 
+developers can automate web actions like opening URLs, filling out forms, clicking buttons, and validating web elements.
+
+How are they related?
+Web drivers are often used in the context of automated testing for Java Web Applications. They enable automation testers 
+to interact with web browsers and simulate user actions, thus automating the testing process. Test frameworks like 
+Selenium WebDriver, which has bindings for Java, provide APIs to control web browsers using web drivers.
+
+For example, in a Java-based test framework like Selenium WebDriver, you can write test scripts in Java to interact 
+with a web driver like ChromeDriver. These test scripts can launch the Chrome browser, navigate to specific URLs within 
+your Java Web Application, perform actions like clicking buttons, entering input, and assert expected outcomes.
+
+Overall, web drivers like ChromeDriver enhance the testing capabilities of Java Web Applications by enabling automated 
+testing and facilitating the simulation of user actions and browser interactions.

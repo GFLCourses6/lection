@@ -1,0 +1,24 @@
+{
+  "steps": [
+    {
+      "id": 0,
+      "findElementType": "ID",
+      "findElementValue": "APjFqb",
+      "actionType": "CLICK"
+    },
+    {
+      "id": 1,
+      "findElementType": "ID",
+      "findElementValue": "APjFqb",
+      "actionType": "CLICK"
+    },
+    {
+      "id": 2,
+      "findElementType": "ID",
+      "findElementValue": "APjFqb",
+      "actionType": "CLICK"
+    }
+  ],
+  "name": "scenario-1",
+  "startPage": "https://google.com"
+}
