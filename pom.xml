@@ -25,6 +25,7 @@
         <module>threads</module>
         <module>subscriber</module>
         <module>tester</module>
+        <module>aop</module>
     </modules>
 
     <properties>
