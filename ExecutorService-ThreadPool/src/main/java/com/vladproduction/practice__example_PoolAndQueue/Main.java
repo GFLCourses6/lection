@@ -1,4 +1,4 @@
-package com.vladproduction.practice;
+package com.vladproduction.practice__example_PoolAndQueue;
 
 public class Main {
     public static void main(String[] args) throws Exception {

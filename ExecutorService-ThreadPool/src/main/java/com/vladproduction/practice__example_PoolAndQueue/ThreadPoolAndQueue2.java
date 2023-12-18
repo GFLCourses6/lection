@@ -1,4 +1,4 @@
-package com.vladproduction.practice;
+package com.vladproduction.practice__example_PoolAndQueue;
 
 import java.util.ArrayList;
 import java.util.List;

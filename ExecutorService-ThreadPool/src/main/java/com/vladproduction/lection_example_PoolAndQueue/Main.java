@@ -1,4 +1,4 @@
-package com.vladproduction.lection_example;
+package com.vladproduction.lection_example_PoolAndQueue;
 
 public class Main {
     public static void main(String[] args) {

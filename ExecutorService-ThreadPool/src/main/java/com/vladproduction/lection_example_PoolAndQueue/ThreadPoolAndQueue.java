@@ -1,4 +1,4 @@
-package com.vladproduction.lection_example;
+package com.vladproduction.lection_example_PoolAndQueue;
 
 import java.util.Queue;
 import java.util.concurrent.*;
