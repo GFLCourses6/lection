@@ -1,0 +1,22 @@
+#1 script to create table 'bird':
+CREATE TABLE `encyclopedia`.`birds` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `bird` VARCHAR(256) NOT NULL,
+  `description` VARCHAR(1024) NOT NULL,
+  PRIMARY KEY (`id`));
+
+#2 script to add birds to table:
+INSERT INTO `encyclopedia`.`birds` (`bird`, `description`) VALUES ('pigeon', 'common in cities');
+INSERT INTO `encyclopedia`.`birds` (`bird`, `description`) VALUES ('eagle', 'hunter bird');
+INSERT INTO `encyclopedia`.`birds` (`bird`, `description`) VALUES ('rooster', 'morning sounds');
+INSERT INTO `encyclopedia`.`birds` (`bird`, `description`) VALUES ('sparrow', 'small wild bird');
+INSERT INTO `encyclopedia`.`birds` (`bird`, `description`) VALUES ('owl', 'action during night');
+
+#3 scriptsSQL:
+*getAllBirds: select * from birds;
+*getFilteredBirds(String birdName): select * from birds where bird=?
+*insertBird(String birdName, String birdDescription): insert into birds(bird, description) values (?, ?)
+*updateBird(String birdName, String birdDescription): update birds SET description = ? where bird = ? and id = ?
+*deleteBird(String birdName): delete from birds where bird = ? and id = ?;
+
+
