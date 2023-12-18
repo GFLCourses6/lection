@@ -1,10 +1,22 @@
 The aim of the project to show how Threads works by using ExecutorService;
 
--lection_example:
+-lection_example_PoolAndQueue:
+    -Runnable;
     -ThreadPoolAndQueue //ConcurrentLinkedQueue
     -Main;
 
--practice:
+-practice_example_PoolAndQueue:
+    -Callable;
     -ThreadPoolAndQueue2 //LinkedBlockingQueue
     -Main;
+
+-practice_example_Executor:
+    -SingleThreadExecutor;
+    -ScheduleThreadPool;
+    -FixedThreadPoolExecutorTest (testing):
+        *fixedThreadPoolExecutorTest();
+        *fixedThreadPoolExecutorGetResultTest();
+        *cashedThreadPoolExecutorGetResultTest();
+        *scheduleThreadPoolExecutorGetResultTest();
+        *atomicThreadPoolExecutorGetResultTest();
 
