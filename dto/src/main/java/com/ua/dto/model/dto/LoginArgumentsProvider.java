@@ -10,8 +10,8 @@ public class LoginArgumentsProvider
         implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
-        return Stream.of(Arguments.of("Jack", "Sparrow", 100L),
-                Arguments.of("John", "Turner", 200L),
-                Arguments.of("Jane", "Swan", 300L));
+        return Stream.of(Arguments.of("http", "Jack", "Sparrow", 100L),
+                         Arguments.of("https", "John", "Turner", 200L),
+                         Arguments.of("https", "Jane", "Swan", 300L));
     }
 }

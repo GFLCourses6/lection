@@ -30,6 +30,7 @@ class ProxyLoggerReflectionTest {
     @ArgumentsSource(LoginArgumentsProvider.class)
     @DisplayName("Test print method with a User object")
     void testPrintWithSimpleObject(
+            String url,
             String firstName,
             String lastName,
             Long id) {
@@ -48,8 +49,9 @@ class ProxyLoggerReflectionTest {
 
     @ParameterizedTest
     @ArgumentsSource(LoginArgumentsProvider.class)
-    void testReflectParams(String loginName, String password, Long timestamp) {
-        Login login = new Login(loginName, password, timestamp);
+    void testReflectParams(String url, String loginName, String password,
+                           Long timestamp) {
+        Login login = new Login(url, loginName, password, timestamp);
         ProxyLoggerReflection logger = new ProxyLoggerReflection(login);
         assertEquals(loginName, logger.getTree().get("loginName"));
         assertEquals(password, logger.getTree().get("password"));

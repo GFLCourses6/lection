@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ua</groupId>
-            <artifactId>sql</artifactId>
+            <artifactId>dao</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>

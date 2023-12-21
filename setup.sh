@@ -4,7 +4,6 @@ USER="Pasha"
 #create ssh keys
 ssh-keygen -t rsa -b 4096 -C "fghjkl11@gmail.com" -f ~/.ssh/id_rsa -N ""
 cat ~/.ssh/id_rsa.pub
-xclip -sel clip < ~/.ssh/id_rsa.pub
 echo "SSH key generated and public key copied to clipboard. Paste it to your remote virtual machine."
 
 #refresh packages

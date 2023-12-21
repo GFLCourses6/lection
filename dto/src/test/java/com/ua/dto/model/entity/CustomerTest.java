@@ -14,7 +14,7 @@ class CustomerTest {
 
     @ParameterizedTest
     @ArgumentsSource(LoginArgumentsProvider.class)
-    void testEqualsAndHashCodeUser(String firstName, String lastName, Long id) {
+    void testEqualsAndHashCodeUser(String url, String firstName, String lastName, Long id) {
         Customer customer1 = new Customer(id.intValue(), firstName, lastName);
         Customer customer2 = new Customer(id.intValue(), firstName, lastName);
         assertTrue(customer1.equals(customer2) && customer2.equals(customer1));
@@ -27,7 +27,7 @@ class CustomerTest {
 
     @ParameterizedTest
     @ArgumentsSource(LoginArgumentsProvider.class)
-    void testEqualsAndHashCode(String firstName, String lastName, Long id) {
+    void testEqualsAndHashCode(String url, String firstName, String lastName, Long id) {
         Customer customer1 = new Customer(id.intValue(), firstName, lastName);
         LoginRecord dto1 = new LoginRecord(firstName, lastName, id);
         Customer customer2 = new Customer(id.intValue(), firstName, lastName);

@@ -61,8 +61,8 @@ class ProxyLoggerPrinterTest {
     }
     @ParameterizedTest
     @ArgumentsSource(LoginArgumentsProvider.class)
-    void testProxyLogger(String firstName, String lastName, Long id) {
-        Login login = new Login(firstName, lastName, id);
+    void testProxyLogger(String url, String firstName, String lastName, Long id) {
+        Login login = new Login(url, firstName, lastName, id);
         ProxyLogger logger = new ProxyLoggerReflection(login);
         logger = new ProxyLoggerPrinter(logger, login);
         assertDoesNotThrow(logger::print);
@@ -70,8 +70,8 @@ class ProxyLoggerPrinterTest {
 
     @ParameterizedTest
     @ArgumentsSource(LoginArgumentsProvider.class)
-    void testPrint(String firstName, String lastName, Long id) {
-        Login login = new Login(firstName, lastName, id);
+    void testPrint(String url,String firstName, String lastName, Long id) {
+        Login login = new Login(url, firstName, lastName, id);
         ProxyLogger proxyLogger = new ProxyLoggerReflection(login);
         ProxyLoggerPrinter printer = new ProxyLoggerPrinter(proxyLogger, login);
         assertDoesNotThrow(printer::print);

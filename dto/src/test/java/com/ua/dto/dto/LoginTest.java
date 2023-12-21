@@ -48,7 +48,7 @@ class LoginTest {
 
     @Test
     void testEquals() {
-        Login will = new Login("William", "Turner", 10L);
+        Login will = new Login("https", "William", "Turner", 10L);
 
         assertEquals(login, will);
     }

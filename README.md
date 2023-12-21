@@ -1,5 +1,7 @@
 # Lectures [![Java CI with Maven](https://github.com/GFLCourses6/lection/actions/workflows/maven.yml/badge.svg)](https://github.com/GFLCourses6/lection/actions/workflows/maven.yml)
 
+[![Setup Environment](https://github.com/GFLCourses6/lection/actions/workflows/setup.yml/badge.svg)](https://github.com/GFLCourses6/lection/actions/workflows/setup.yml)
+
 ## Patterns:
   - Dto
   - Builder

@@ -8,10 +8,10 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>sql</artifactId>
+    <artifactId>dao</artifactId>
     <packaging>jar</packaging>
 
-    <name>sql</name>
+    <name>dao</name>
     <url>https://maven.apache.org</url>
 
     <properties>

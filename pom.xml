@@ -19,7 +19,7 @@
         <module>proxy</module>
         <module>dto</module>
         <module>facade</module>
-        <module>sql</module>
+        <module>dao</module>
         <module>builder</module>
         <module>singleton</module>
         <module>threads</module>

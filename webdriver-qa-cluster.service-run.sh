@@ -8,7 +8,7 @@ RUN_FILE="$PWD/${SERVICE_NAME}-run.sh"
 
 rm -r qa-cluster-e
 
-git clone git@github.com:GFLCourses6/worker.git
+git clone https://github.com/GFLCourses6/worker.git
 cd /worker/executor-service
 
 mvn clean compile assembly:single
