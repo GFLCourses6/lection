@@ -15,7 +15,7 @@
   - Webdriver
   - Observer
   - Subscriber-publisher
-
+  - Repository
 
 ### Compile and run the code: User, Ship, Main
 `javac com/classwork/pattern/dto/entity/model/User.java com/classwork/pattern/dto/DtoApp.java && java com/classwork/pattern/dto/DtoApp`

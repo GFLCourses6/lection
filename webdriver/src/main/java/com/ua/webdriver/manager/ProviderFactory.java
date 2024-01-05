@@ -1,5 +1,6 @@
 package com.ua.webdriver.manager;
 
+import com.ua.webdriver.model.Browsers;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chromium.ChromiumOptions;
@@ -9,19 +10,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import static com.ua.webdriver.model.BrowserDriver.CHROME;
-import static com.ua.webdriver.model.BrowserDriver.EDGE;
-import static com.ua.webdriver.model.BrowserDriver.FIREFOX;
-
 public class ProviderFactory {
 
-    public Factory getFactory(String browserType) {
-        return switch (browserType) {
+    public Factory getFactory(Browsers browser) {
+        return switch (browser) {
             case EDGE -> getDriverFactory();
             case CHROME -> getChromeDriverFactory();
             case FIREFOX -> getFirefoxDriverFactory();
             default -> throw new WebDriverException(
-                    "Invalid browser type: " + browserType);
+                    "Invalid browser type: " + browser);
         };
     }
 

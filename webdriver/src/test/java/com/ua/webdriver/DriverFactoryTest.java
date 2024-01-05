@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static com.ua.webdriver.model.Browsers.EDGE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
@@ -91,9 +92,9 @@ class DriverFactoryTest {
                         remoteWebDriver);
         ProviderFactory mockProviderFactory =
                 Mockito.mock(ProviderFactory.class);
-        when(mockProviderFactory.getFactory("EdgeDriver")).thenReturn(factory);
+        when(mockProviderFactory.getFactory(EDGE)).thenReturn(factory);
         WebDriver webDriver = mockProviderFactory
-                .getFactory("EdgeDriver")
+                .getFactory(EDGE)
                 .createWebDriver(gridUrl, environmentUrl);
         assertEquals(driver, webDriver);
         assertTrue(webDriver instanceof RemoteWebDriver);

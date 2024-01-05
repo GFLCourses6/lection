@@ -1,20 +1,19 @@
-package com.ua.structural.pool;
+package com.ua.pool;
 
 import com.ua.dto.model.dto.Login;
+import com.ua.structural.pool.LoginPool;
 import com.ua.structural.strategy.UserRegistrationStrategy;
 import com.ua.structural.strategy.WebUserRegistrationStrategy;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+import org.mockito.Mockito;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import static org.mockito.Mockito.mock;
 
 class LoginPoolTest {
 
-    private final WebDriver driver = mock(WebDriver.class);
+    private final WebDriver driver = Mockito.mock(WebDriver.class);
     UserRegistrationStrategy strategy = new WebUserRegistrationStrategy(driver);
 
     private final LoginPool LOGIN_POOL = new LoginPool();

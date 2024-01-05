@@ -1,6 +1,6 @@
-package com.ua.db.service;
+package com.ua.db.model;
 
-public record Bird(int id, String name, String description) {
+public record BirdRecord(int id, String name, String description) {
 
     @Override
     public String toString() {

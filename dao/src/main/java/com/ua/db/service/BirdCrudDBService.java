@@ -1,5 +1,7 @@
 package com.ua.db.service;
 
+import com.ua.db.model.BirdRecord;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +16,7 @@ import static com.ua.db.service.Query.SELECT_BY;
 import static com.ua.db.service.Query.UPDATE;
 
 public class BirdCrudDBService
-        implements CrudDBService<Bird> {
+        implements CrudDBService<BirdRecord> {
 
     private final Connection connection;
 
@@ -31,40 +33,40 @@ public class BirdCrudDBService
     }
 
     @Override
-    public List<Bird> getAllBirds()
+    public List<BirdRecord> getAllBirds()
             throws SQLException {
-        List<Bird> birdNames = new ArrayList<>();
+        List<BirdRecord> birdRecordNames = new ArrayList<>();
         try (ResultSet resultSet = connection
                 .prepareStatement(SELECT_ALL)
                 .executeQuery()) {
-            mapToList(resultSet, birdNames);
+            mapToList(resultSet, birdRecordNames);
         }
-        return birdNames;
+        return birdRecordNames;
     }
 
     private static void mapToList(
             ResultSet resultSet,
-            List<Bird> birds)
+            List<BirdRecord> birdRecords)
             throws SQLException {
         while (resultSet.next()) {
             int id = resultSet.getInt("id");
             String name = resultSet.getString("bird");
             String description = resultSet.getString("description");
-            birds.add(new Bird(id, name, description));
+            birdRecords.add(new BirdRecord(id, name, description));
         }
     }
 
 
     @Override
-    public List<Bird> getFilterBirds(String name)
+    public List<BirdRecord> getFilterBirds(String name)
             throws SQLException {
-        List<Bird> filteredBirds = new ArrayList<>();
+        List<BirdRecord> filteredBirdRecords = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SELECT_BY)) {
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
-            mapToList(resultSet, filteredBirds);
+            mapToList(resultSet, filteredBirdRecords);
         }
-        return filteredBirds;
+        return filteredBirdRecords;
     }
 
     @Override

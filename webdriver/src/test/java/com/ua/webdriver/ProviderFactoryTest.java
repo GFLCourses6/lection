@@ -19,9 +19,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
 import java.util.function.Function;
 
-import static com.ua.webdriver.model.BrowserDriver.CHROME;
-import static com.ua.webdriver.model.BrowserDriver.EDGE;
-import static com.ua.webdriver.model.BrowserDriver.FIREFOX;
+import static com.ua.webdriver.model.Browsers.CHROME;
+import static com.ua.webdriver.model.Browsers.EDGE;
+import static com.ua.webdriver.model.Browsers.FIREFOX;
+import static com.ua.webdriver.model.Browsers.INVALID;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
@@ -95,6 +96,6 @@ class ProviderFactoryTest {
     void testGetFactoryWithInvalidBrowserType() {
         ProviderFactory providerFactory = new ProviderFactory();
         assertThrows(WebDriverException.class,
-                () -> providerFactory.getFactory("InvalidBrowser"));
+                () -> providerFactory.getFactory(INVALID));
     }
 }

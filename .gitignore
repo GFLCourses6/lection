@@ -49,6 +49,8 @@ target/
 .idea
 target
 .mvn
+allure-results
+.allure
 
 ### NetBeans ###
 /nbproject/private/

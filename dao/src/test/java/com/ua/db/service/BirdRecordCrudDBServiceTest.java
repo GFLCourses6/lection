@@ -1,5 +1,6 @@
 package com.ua.db.service;
 
+import com.ua.db.model.BirdRecord;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class BirdCrudDBServiceTest {
+class BirdRecordCrudDBServiceTest {
 
     @Mock
     private Connection connection;
@@ -33,7 +34,7 @@ class BirdCrudDBServiceTest {
     @Mock
     private ResultSet resultSet;
     private BirdCrudDBService service;
-    private List<Bird> birds;
+    private List<BirdRecord> birdRecords;
     private List<Integer> ids;
     private List<String> names;
     private List<String> desc;
@@ -50,14 +51,14 @@ class BirdCrudDBServiceTest {
         when(connection.prepareStatement(INSERT)).thenReturn(statement);
         when(connection.prepareStatement(UPDATE)).thenReturn(statement);
         when(connection.prepareStatement(DELETE)).thenReturn(statement);
-        birds = List.of(new Bird(1, "pigeon", "Common city bird with gray feathers."),
-                        new Bird(2, "eagle", "Large bird of prey with a strong beak and talons."),
-                        new Bird(3, "rooster", "Male chicken known for its crowing at dawn."),
-                        new Bird(4, "sparrow", "Small bird with brown and gray plumage."),
-                        new Bird(5, "owl", "Nocturnal bird of prey with a distinctive hooting sound."));
-        ids = birds.stream().map(Bird::id).toList();
-        names = birds.stream().map(Bird::name).toList();
-        desc = birds.stream().map(Bird::description).toList();
+        birdRecords = List.of(new BirdRecord(1, "pigeon", "Common city bird with gray feathers."),
+                              new BirdRecord(2, "eagle", "Large bird of prey with a strong beak and talons."),
+                              new BirdRecord(3, "rooster", "Male chicken known for its crowing at dawn."),
+                              new BirdRecord(4, "sparrow", "Small bird with brown and gray plumage."),
+                              new BirdRecord(5, "owl", "Nocturnal bird of prey with a distinctive hooting sound."));
+        ids = birdRecords.stream().map(BirdRecord::id).toList();
+        names = birdRecords.stream().map(BirdRecord::name).toList();
+        desc = birdRecords.stream().map(BirdRecord::description).toList();
     }
 
     @AfterEach
@@ -73,20 +74,20 @@ class BirdCrudDBServiceTest {
         when(resultSet.getInt("id")).thenReturn(id);
         when(resultSet.getString("bird")).thenReturn(name);
         when(resultSet.getString("description")).thenReturn(description);
-        Bird bird = new Bird(id, name, description);
-        List<Bird> actual = service.getFilterBirds(name);
+        BirdRecord birdRecord = new BirdRecord(id, name, description);
+        List<BirdRecord> actual = service.getFilterBirds(name);
         verify(connection).prepareStatement(SELECT_BY);
         verify(statement).setString(1, name);
         verify(statement).executeQuery();
         assertEquals(expected, actual.size());
-        assertEquals(bird, birds.get(id - 1));
+        assertEquals(birdRecord, birdRecords.get(id - 1));
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/test_data.csv", numLinesToSkip = 1)
     void testInsertBird(int id, String name, String description, int expected) throws SQLException {
-        Bird bird = new Bird(id, name, description);
-        assertNotNull(bird);
+        BirdRecord birdRecord = new BirdRecord(id, name, description);
+        assertNotNull(birdRecord);
         when(statement.executeUpdate()).thenReturn(expected);
         int result = service.insertBird(name, description);
         verify(connection).prepareStatement(INSERT);
@@ -111,10 +112,10 @@ class BirdCrudDBServiceTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/test_data.csv", numLinesToSkip = 1)
     void testDeleteBird(int id, String name, String description, int expected) throws SQLException {
-        Bird bird = new Bird(id, name, description);
-        assertNotNull(bird);
+        BirdRecord birdRecord = new BirdRecord(id, name, description);
+        assertNotNull(birdRecord);
         when(statement.executeUpdate()).thenReturn(expected);
-        int result = service.deleteBird(bird.name());
+        int result = service.deleteBird(birdRecord.name());
         verify(connection).prepareStatement(DELETE);
         verify(statement).setString(1, name);
         verify(statement).executeUpdate();
@@ -127,27 +128,27 @@ class BirdCrudDBServiceTest {
         when(resultSet.getInt("id")).thenReturn(ids.get(0), ids.get(1), ids.get(2), ids.get(3), ids.get(4));
         when(resultSet.getString("bird")).thenReturn(names.get(0), names.get(1), names.get(2), names.get(3), names.get(4));
         when(resultSet.getString("description")).thenReturn(desc.get(0), desc.get(1), desc.get(2), desc.get(3), desc.get(4));
-        List<Bird> result = service.getAllBirds();
+        List<BirdRecord> result = service.getAllBirds();
         verify(connection).prepareStatement(SELECT_ALL);
         verify(statement).executeQuery();
-        assertEquals(birds, result);
+        assertEquals(birdRecords, result);
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/test_data.csv", numLinesToSkip = 3)
     void testGetFilterBirdsByName(int id, String name, String description, int expected)
             throws SQLException {
-        Bird bird = new Bird(id, name, description);
+        BirdRecord birdRecord = new BirdRecord(id, name, description);
         when(resultSet.next()).thenReturn(true, true, false);
         when(resultSet.getInt("id")).thenReturn(ids.get(3), ids.get(4));
         when(resultSet.getString("bird")).thenReturn(names.get(3), names.get(4));
         when(resultSet.getString("description")).thenReturn(desc.get(3), desc.get(4));
-        List<Bird> result = service.getFilterBirds(bird.name());
+        List<BirdRecord> result = service.getFilterBirds(birdRecord.name());
         verify(connection).prepareStatement(SELECT_BY);
-        verify(statement).setString(1, bird.name());
+        verify(statement).setString(1, birdRecord.name());
         verify(statement).executeQuery();
-        List<Bird> expectedBirds = birds.subList(3, 5);
-        assertEquals(expectedBirds, result);
+        List<BirdRecord> expectedBirdRecords = birdRecords.subList(3, 5);
+        assertEquals(expectedBirdRecords, result);
     }
 
     @Test
