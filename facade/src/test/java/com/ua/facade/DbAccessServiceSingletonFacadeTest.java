@@ -4,8 +4,8 @@ import com.ua.facade.service.DbAccessService;
 import com.ua.facade.service.DbAccessServiceFacade;
 import com.ua.facade.service.DbConnectionPostgreSqlService;
 import com.ua.facade.service.DbConnectionService;
-import com.ua.sql.SqlQueriesService;
-import com.ua.sql.SqlQueriesServiceGeneric;
+import com.ua.db.sql.SqlQueriesService;
+import com.ua.db.sql.SqlQueriesServiceGeneric;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

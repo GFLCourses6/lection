@@ -29,6 +29,8 @@ public class RestConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(
             final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/favicon.ico")
+                .addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
     }

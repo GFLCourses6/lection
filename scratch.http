@@ -1,0 +1,102 @@
+POST http://localhost:8080/realms/worker/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=spring-security&client_secret=sW8ej6CZw9AbwNulyaOupqtq5oNsLpM7
+    &username=alice&password=alice&grant_type=password
+
+###
+
+GET http://localhost:8081/auth.html
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJrWk5HQTBuNEFDTU1IWlVCWk5sODFrcV9QRXZOQ2hHbmI0Z0ExZmE2LXc0In0.eyJleHAiOjE3MDQxMTE5MDMsImlhdCI6MTcwNDExMTYwMywianRpIjoiYTRjN2Y4ODgtZjYwNC00YjBlLThiOTgtMjNlOGM4MzI1NjcyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy93b3JrZXIiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTU2YTRmMjktN2ZjYS00M2U3LTg5YjctYmIyYTY1MGUwZTYwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3ByaW5nLXNlY3VyaXR5Iiwic2Vzc2lvbl9zdGF0ZSI6ImRjYjIwZDEyLTVmNjktNDBhMy1hN2VmLTRmZWM2Njg1MTVkNiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDgxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtd29ya2VyIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJkY2IyMGQxMi01ZjY5LTQwYTMtYTdlZi00ZmVjNjY4NTE1ZDYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6ImFsaWNlIGFsaWNlIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWxpY2UiLCJnaXZlbl9uYW1lIjoiYWxpY2UiLCJmYW1pbHlfbmFtZSI6ImFsaWNlIiwiZW1haWwiOiJhbGljZUBpLnVhIn0.gmJKy75046eaIi3E38shXYtbuSh2w069xmIKAXBLdqdXCTRSE21GXchCt6vDB5SEZmfl0DVkiyP4DzGa5yJYPy102YCb_MvH20MwHAJqzp716-g0PjaJGH8VwhhtIFG-kIZoXoWBVK-93nOO9g2Febj77rRxhS_yNmOVidJD1sWy9_NaqNVcdiGDMp1Ofy2CembuifzvMQQV06mAnU263nUC8eMtzMwEXBxMZk2l7sH5ve3hwGZkEj16CBBY1O9UZD44WeHvgSnJtomNFEJWdoTOcJMrgz0y7cc__9PUPeHJIJVI4z4t_N7Fd1vymbQKX67UgL42d_LIjDfWa1TTGw
+
+###
+< {%
+    request.variables.set("msg", "web")
+%}
+GET http://localhost:8085/process/{{msg}}
+
+###
+GET http://localhost:8080/api/client
+
+###
+POST http://localhost:8080/api/client
+
+###
+POST http://localhost:8080/api/user/
+
+###
+GET http://localhost:8085/api/user
+
+###
+GET http://localhost:8085/api/property/dev
+
+###
+GET http://localhost:8085/api/property/prod
+
+###
+< {%
+    request.variables.set("port", "3000")
+    request.variables.set("name", "rest")
+%}
+POST http://localhost:8085/api/property/{{port}}/{{name}}
+
+### Web Controller
+
+###
+GET http://localhost:8088/api/web/
+
+###
+PUT http://localhost:8088/api/web/
+
+###
+POST http://localhost:8088/api/web/
+
+###
+DELETE http://localhost:8088/api/web/
+
+###
+POST http://localhost:8088/api/web/integration
+
+###
+GET http://localhost:8088/api/web/search
+
+###
+< {%
+    request.variables.set("clientId", "1")
+%}
+PATCH http://localhost:8088/api/web/{{clientId}}
+
+###
+< {%
+    request.variables.set("clientId", "1")
+    request.variables.set("type", "admin")
+%}
+GET http://localhost:8088/api/web/{{clientId}}/{{type}}
+
+### Birds Controller
+
+###
+POST http://localhost:8088/api/birds/add
+
+###
+GET http://localhost:8088/api/birds/all
+
+###
+< {%
+    request.variables.set("name", "sparrow")
+%}
+GET http://localhost:8088/api/birds/by/{{name}}
+
+###
+< {%
+    request.variables.set("id", "4")
+%}
+DELETE http://localhost:8088/api/birds/delete/{{id}}
+
+###
+< {%
+    request.variables.set("id", "3")
+%}
+GET http://localhost:8088/api/birds/{{id}}
+
+

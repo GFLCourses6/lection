@@ -23,7 +23,7 @@ public class ScheduleComponent {
         incrementCount();
     }
 
-    @Async
+    @Async("asyncTaskExecutor")
     @Scheduled(fixedDelay = 1, initialDelay = 1, timeUnit = TimeUnit.SECONDS)
     public void fixedDelaySchedule() throws InterruptedException {
         print();

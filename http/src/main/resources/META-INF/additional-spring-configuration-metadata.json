@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "post.uri",
+      "type": "java.lang.String",
+      "description": "Description for post.uri."
+  }
+] }

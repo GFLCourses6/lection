@@ -1,6 +1,5 @@
 package com.ua.logger;
 
-import com.ua.config.AppConfig;
 import com.ua.config.RestConfig;
 import org.springframework.lang.NonNull;
 import org.springframework.web.context.WebApplicationContext;
@@ -12,7 +11,7 @@ public class WebAppInitializer
         extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{AppConfig.class};
+        return new Class[]{RestConfig.class};
     }
 
     @Override

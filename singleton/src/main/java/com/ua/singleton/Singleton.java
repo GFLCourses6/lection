@@ -3,7 +3,7 @@ package com.ua.singleton;
 public class Singleton {
     private String value;
 
-    public Singleton(String value) {
+    private Singleton(String value) {
         this.value = value;
     }
 
@@ -26,5 +26,10 @@ public class Singleton {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "Singleton{" + "value='" + value + '\'' + '}';
     }
 }

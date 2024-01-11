@@ -1,6 +1,6 @@
 package com.ua.facade.service;
 
-import com.ua.sql.SqlQueriesService;
+import com.ua.db.sql.SqlQueriesService;
 
 public class DbAccessServiceFacade
         implements DbAccessService {

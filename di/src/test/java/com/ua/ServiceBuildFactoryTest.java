@@ -1,12 +1,12 @@
 package com.ua;
 
-import com.ua.di.AbstractFactory;
-import com.ua.di.DIFactory;
+import com.ua.di.factory.AbstractFactory;
+import com.ua.di.factory.DIFactory;
 import com.ua.di.exception.ConstructorException;
 import com.ua.di.exception.NonExistentService;
 import com.ua.di.service.DBIntegrationService;
 import com.ua.di.service.FileIntegrationService;
-import com.ua.di.service.ServiceBuildFactory;
+import com.ua.di.factory.ServiceBuildFactory;
 import com.ua.di.service.StringIntegrationService;
 import org.junit.jupiter.api.Test;
 
