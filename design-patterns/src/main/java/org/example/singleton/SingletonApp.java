@@ -25,7 +25,7 @@ public class SingletonApp {
         // Singleton enum approach:
         SingletonEnum sg = SingletonEnum.INSTANCE;
         singleton.setValue("SingletonEnum");
-        System.out.println(singleton.getValue());
+           System.out.println(singleton.getValue());
 
     }
 
