@@ -13,7 +13,7 @@ public class ScheduleComponent {
 
     @Async // асинхронный запуск скедуалара
     // fixedRateString = "${fixed.delay.rate}", initialDelay = 5000
-    @Scheduled(fixedRate =  1000, initialDelay = 5000) // fixedRate - запускает запланированный метод каждые n mileseconds, он не проверяет наличие предыдущих запусков - то есть он будет все равно запускать каждую сек
+    //@Scheduled(fixedRate =  1000, initialDelay = 5000) // fixedRate - запускает запланированный метод каждые n mileseconds, он не проверяет наличие предыдущих запусков - то есть он будет все равно запускать каждую сек
     public void fixedRateSchedule() throws InterruptedException { // fixedDaily - уже проверяет начиличие предыдуших запусков, то есть он будет ждать на окончание предыдущей таски и будет запускать некст
         // fixedDelayString - можно передать значение с проперти файла
         // initialDelay - когда мы хочешь запускать наш каждыую секунду после старта апки через 5 сек - ждет 5 сек и потом каждую сек
@@ -25,7 +25,7 @@ public class ScheduleComponent {
     }
 
     @Async
-   @Scheduled(fixedDelay =  1000) // fixedRate - запускает запланированный метод каждые n mileseconds, он не проверяет наличие предыдущих запусков - то есть он будет все равно запускать каждую сек
+   //@Scheduled(fixedDelay =  1000) // fixedRate - запускает запланированный метод каждые n mileseconds, он не проверяет наличие предыдущих запусков - то есть он будет все равно запускать каждую сек
     public void fixedDelaySchedule() throws InterruptedException { // fixedDaily - уже проверяет начиличие предыдуших запусков, то есть он будет ждать на окончание предыдущей таски и будет запускать некст
         // fixedDelayString - можно передать значение с проперти файла
         // initialDelay - когда мы хочешь запускать наш каждыую секунду после старта апки через 5 сек - ждет 5 сек и потом каждую сек
